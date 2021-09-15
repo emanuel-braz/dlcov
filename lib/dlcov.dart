@@ -1,43 +1,28 @@
 import 'dart:io';
+import 'package:dlcov/coverage_entity.dart';
+import 'package:dlcov/app_util.dart';
 
 class Dlcov {
-  void call(List<String> arguments) async {
-    late String lcovFile;
-    late double minCoverage;
+  late CoverageEntity coverageInfo;
 
+  void call(List<String> arguments) async {
     try {
-      lcovFile = arguments[0];
-      minCoverage = double.parse(arguments[1]);
+      var lcovFile = arguments[0];
+      var minCoverage = double.parse(arguments[1]);
+      coverageInfo = await AppUtil().getCoverageEntity(minCoverage, lcovFile);
     } catch (e) {
-      print('[ERROR]: Invalid argument');
+      print('[ERROR]: Invalid or missing arguments');
       exit(128);
     }
 
     try {
-      final lines = await File(lcovFile).readAsLines();
-      final coverage = lines.fold([0, 0], (List<int> data, line) {
-        var testedLines = data[0];
-        var totalLines = data[1];
-        if (line.startsWith('DA')) {
-          totalLines++;
-          if (double.parse(line.split(',')[1]) > 0) {
-            testedLines++;
-          }
-        }
-        return [testedLines, totalLines];
-      });
-
-      final testedLines = coverage[0];
-      final totalLines = coverage[1];
-      final totalCoverage = (testedLines / totalLines) * 100;
-
-      if (minCoverage > totalCoverage) {
+      if (!coverageInfo.isCovered) {
         print(
-            '[FAIL]: The total code coverage ${totalCoverage.toStringAsFixed(1)}% is lower than expected $minCoverage%');
+            '[FAIL]: The total code coverage ${coverageInfo.totalCoverage.toStringAsFixed(1)}% is lower than expected ${coverageInfo.minCoverage}%');
         exit(1);
       } else {
         print(
-            '[SUCCESS]: The total code coverage ${totalCoverage.toStringAsFixed(1)}% is equal to, or greater than expected $minCoverage%');
+            '[SUCCESS]: The total code coverage ${coverageInfo.totalCoverage.toStringAsFixed(1)}% is equal to, or greater than expected ${coverageInfo.minCoverage}%');
         exit(0);
       }
     } catch (e) {
