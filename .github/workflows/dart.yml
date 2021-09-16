@@ -28,7 +28,10 @@ jobs:
       - uses: DanTup/gh-actions/setup-dart@master
       - run: mkdir build
       - run: dart pub get
-      - run: dart test
+      - run: dartanalyzer .
+      - run: flutter test --coverage
+      - run: pub global activate dlcov
+      - run: dlcov coverage/lcov.info 80
       - run: dart compile exe bin/dlcov.dart -o build/${{ matrix.output-name }}
       - uses: actions/upload-artifact@v1
         with:
