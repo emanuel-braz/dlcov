@@ -24,8 +24,11 @@ jobs:
             output-name: dlcov.exe
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: DanTup/gh-actions/setup-dart@master
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2.3'
+          channel: 'stable'
       - run: mkdir build
       - run: dart pub get
       - run: dartanalyzer .
