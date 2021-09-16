@@ -35,6 +35,11 @@ jobs:
       - run: flutter test --coverage
       - run: pub global activate dlcov
       - run: dlcov coverage/lcov.info 80
+      - name: Upload coverage to Codecov
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/lcov.info
       - run: dart compile exe bin/dlcov.dart -o build/${{ matrix.output-name }}
       - uses: actions/upload-artifact@v1
         with:
