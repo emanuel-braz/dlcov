@@ -3,7 +3,9 @@ import 'package:test/test.dart';
 
 void main() {
   group('Coverage Entity tests: ', () {
-    test('When minCoverage is 12% and totalCoverage is 15%, [isCovered] must be true', () {
+    test(
+        'When minCoverage is 12% and totalCoverage is 15%, [isCovered] must be true',
+        () {
       // arrange
       var coverageEntity = Coverage(12);
       const isCoveredExpectedResult = true;
@@ -15,7 +17,9 @@ void main() {
       expect(coverageEntity.isCovered, equals(isCoveredExpectedResult));
     });
 
-    test('When minCoverage is 12% and totalCoverage is 11%, [isCovered] must be false', () {
+    test(
+        'When minCoverage is 12% and totalCoverage is 11%, [isCovered] must be false',
+        () {
       // arrange
       var coverageEntity = Coverage(12);
       const isCoveredExpectedResult = false;
@@ -27,7 +31,9 @@ void main() {
       expect(coverageEntity.isCovered, equals(isCoveredExpectedResult));
     });
 
-    test('When minCoverage is 12.5% and totalCoverage is 12.5%, [isCovered] must be true', () {
+    test(
+        'When minCoverage is 12.5% and totalCoverage is 12.5%, [isCovered] must be true',
+        () {
       // arrange
       var coverageEntity = Coverage(12.5);
       const isCoveredExpectedResult = true;

@@ -1,3 +1,4 @@
+/// Coverage entity
 class Coverage {
   final double _minCoverage;
   double _totalCoverage = 0;

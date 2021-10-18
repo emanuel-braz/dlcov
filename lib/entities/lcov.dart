@@ -6,6 +6,7 @@ import 'package:lcov_parser/lcov_parser.dart';
 import 'config.dart';
 import 'coverage.dart';
 
+/// Lcov entity
 class Lcov {
   final Config config;
   late Coverage coverage;
@@ -18,7 +19,8 @@ class Lcov {
     try {
       coverage = Coverage(config.percentage);
 
-      records = records.where((element) => !hasSufix(element.file ?? '')).toList();
+      records =
+          records.where((element) => !hasSufix(element.file ?? '')).toList();
       records.forEach(updateTotals);
 
       final totalCoverage = (totalHits / totalFinds) * 100;
@@ -32,11 +34,14 @@ class Lcov {
     }
   }
 
+  /// Check if has sufix
   bool hasSufix(String value) {
-    final matchList = config.excludeSufixes.where((element) => value.endsWith(element));
+    final matchList =
+        config.excludeSufixes.where((element) => value.endsWith(element));
     return matchList.isNotEmpty;
   }
 
+  /// Update totals
   void updateTotals(Record rec) {
     totalFinds += rec.lines?.found ?? 0;
     totalHits += rec.lines?.hit ?? 0;
