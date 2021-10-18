@@ -16,3 +16,9 @@
 | --file | -f | false | coverage/lcov.info | ./lcov.info | relative lcov file path |
 | --log | -l | false | false | true | Log every test coverage info in dlcov.log  - Limit up to 1000 lines |
 | --exclude-sufix | -e | false | .g.dart,.freezed.dart | .g.dart | Remove generated files from test coverage results, separated by commas |
+
+### Github actions  
+  
+if the test coverage is less than 80, it stop the pipeline here, and abort the actions  
+  
+<img width="605" alt="ScreenShot" src="https://user-images.githubusercontent.com/3827308/137652713-497c726a-5f56-4a63-b59b-3c135d6921ec.png">
