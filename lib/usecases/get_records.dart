@@ -5,6 +5,7 @@ class GetRecords {
   final RecordsRepository repository;
   GetRecords(this.repository);
 
+  /// Execute usecase
   Future<List<Record>> call() async {
     return await repository.call();
   }

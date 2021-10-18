@@ -11,6 +11,7 @@ class GetLcov {
 
   GetLcov(this.config, this.getRecords);
 
+  /// Execute usecase
   Future<Lcov> call() async {
     try {
       final records = await getRecords();

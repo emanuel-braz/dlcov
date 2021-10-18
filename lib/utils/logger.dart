@@ -8,6 +8,7 @@ class Logger {
   final minCoverageParam = 'minCoverage=';
   final successParam = 'success=';
 
+  /// log test coverage values
   void log(Lcov lcov) {
     try {
       final file = File(AppConstants.dlcovLogFile)..createSync();
@@ -22,9 +23,11 @@ class Logger {
           if (params[0].startsWith(coverageParam)) {
             final lastCoverage = double.parse(params[0].split('=').last);
             if (lastCoverage > lcov.coverage.totalCoverage) {
-              print('Decrease ${lastCoverage - lcov.coverage.totalCoverage} coverage :(');
+              print(
+                  'Decrease ${lastCoverage - lcov.coverage.totalCoverage} coverage :(');
             } else if (lastCoverage < lcov.coverage.totalCoverage) {
-              print('Increase ${lcov.coverage.totalCoverage - lastCoverage} coverage :)');
+              print(
+                  'Increase ${lcov.coverage.totalCoverage - lastCoverage} coverage :)');
             } else {
               print('Keep same coverage :|');
             }

@@ -8,6 +8,7 @@ class GetConfig {
   final ArgParser parser;
   GetConfig(this.repository, this.parser);
 
+  /// Execute usecase
   Config call() {
     final configModel = repository.call();
     return Config(

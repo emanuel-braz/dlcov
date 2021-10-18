@@ -3,6 +3,7 @@ import 'dart:io';
 import '../entities/lcov.dart';
 
 class VerifyCoverage {
+  /// Verify the test coverage
   void call(Lcov lcov) {
     try {
       if (lcov.coverage.isCovered) {

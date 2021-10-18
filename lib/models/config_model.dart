@@ -1,3 +1,4 @@
+/// Config model
 class ConfigModel {
   final String file;
   final double percentage;

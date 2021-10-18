@@ -1,3 +1,4 @@
+/// Config entity
 class Config {
   final String file;
   final double percentage;
