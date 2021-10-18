@@ -5,6 +5,9 @@
 `dlcov --file=path/to/lcov.info --coverage=80 --exclude-sufix=.g.dart,.freezed.dart --log=true`  
 #### Short
 `dlcov -f ./lcov.info -c 80 -e .g.dart,.freezed.dart -l true`
+  
+#### Using Flutter defaults
+`dlcov -c 80`
 
 ### Install 
 `pub global activate dlcov`

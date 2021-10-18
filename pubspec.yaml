@@ -1,6 +1,6 @@
 name: dlcov
 description: CLI app to verify flutter test coverage target in CI/CD pipeline
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/emanuel-braz/dlcov.git
 
 environment:
