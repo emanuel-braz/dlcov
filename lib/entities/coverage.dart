@@ -1,6 +1,5 @@
-class CoverageEntity {
+class Coverage {
   final double _minCoverage;
-  late String lcovFile;
   double _totalCoverage = 0;
 
   bool get isCovered {
@@ -17,5 +16,5 @@ class CoverageEntity {
     _totalCoverage = value;
   }
 
-  CoverageEntity(this._minCoverage, this.lcovFile);
+  Coverage(this._minCoverage);
 }

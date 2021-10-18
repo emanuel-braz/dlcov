@@ -34,7 +34,7 @@ jobs:
       - run: dartanalyzer .
       - run: flutter test --coverage
       - run: pub global activate dlcov
-      - run: dlcov coverage/lcov.info 80
+      - run: dlcov -c 80
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

@@ -16,7 +16,7 @@ packages:
     source: hosted
     version: "2.2.0"
   args:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: args
       url: "https://pub.dartlang.org"
@@ -127,6 +127,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  lcov_parser:
+    dependency: "direct main"
+    description:
+      name: lcov_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
+  lints:
+    dependency: "direct dev"
+    description:
+      name: lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   logging:
     dependency: transitive
     description:
