@@ -12,10 +12,10 @@ class GetConfig {
   Config call() {
     final configModel = repository.call();
     return Config(
-      percentage: configModel.percentage,
-      log: configModel.log,
-      file: configModel.file,
-      excludeSufixes: configModel.excludeSufixes,
-    );
+        percentage: configModel.percentage,
+        log: configModel.log,
+        file: configModel.file,
+        excludeSufixes: configModel.excludeSufixes,
+        packageName: configModel.packageName);
   }
 }

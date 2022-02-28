@@ -8,12 +8,14 @@ class CreateFileReferences {
   final String _sourceDirectory;
   final List<String> _removeFileWithSufixes;
   final CreateFileReferencesHelper _helper;
+  final String? _packageName;
 
   CreateFileReferences(
     this._helper,
     this._sourceDirectory, [
     this._removeFileWithSufixes = const [],
-  ]);
+    String? packageName,
+  ]) : _packageName = packageName ??= Directory.current.path.split('/').last;
 
   Future<File> call() async {
     final fileSytemEntities =
@@ -21,8 +23,6 @@ class CreateFileReferences {
 
     final filteredFilePaths =
         _helper.getFilteredFilePaths(fileSytemEntities, _removeFileWithSufixes);
-
-    final packageName = Directory.current.path.split('/').last;
 
     final fileImports = [
       '/*\n'
@@ -35,7 +35,7 @@ class CreateFileReferences {
 
     fileImports.addAll(filteredFilePaths
         .map((path) =>
-            "import 'package:$packageName${path.replaceFirst(_sourceDirectory, '')}';")
+            "import 'package:$_packageName${path.replaceFirst(_sourceDirectory, '')}';")
         .toList());
 
     fileImports.add('void main(){}');

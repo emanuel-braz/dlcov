@@ -11,10 +11,13 @@ class ConfigModel {
   /// log
   final bool log;
 
-  ConfigModel({
-    required this.file,
-    required this.percentage,
-    required this.excludeSufixes,
-    required this.log,
-  });
+  /// package name
+  final String? packageName;
+
+  ConfigModel(
+      {required this.file,
+      required this.percentage,
+      required this.excludeSufixes,
+      required this.log,
+      this.packageName});
 }

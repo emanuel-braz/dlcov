@@ -1,8 +1,6 @@
 name: Build on Push or PR
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -34,7 +32,7 @@ jobs:
       - run: dartanalyzer .
       - run: flutter test --coverage
       - run: pub global activate --source path ../dlcov
-      - run: dlcov -c 80
+      - run: dlcov -c 0
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

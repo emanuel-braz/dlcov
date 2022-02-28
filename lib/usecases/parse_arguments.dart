@@ -23,6 +23,11 @@ class ParseArguments {
         defaultsTo: AppConstants.falseAsStringValue,
         mandatory: false);
 
+    parser.addOption(AppConstants.argLongPackageName,
+        abbr: AppConstants.argShortPackageName,
+        defaultsTo: null,
+        mandatory: false);
+
     final argResults = parser.parse(arguments);
 
     return argResults;
