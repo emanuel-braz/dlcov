@@ -1,3 +1,6 @@
+# [2.0.1] 2022-02-28
+- fix windows compatibility
+
 # [2.0.0] 2022-02-27
 
 #### Break

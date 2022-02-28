@@ -32,7 +32,8 @@ void main(List<String> arguments) async {
       .call();
 
   // Generate lcov.info
-  await Process.run('flutter', ['test', '--coverage']);
+  await Process.run('flutter', ['test', '--coverage'],
+      runInShell: Platform.isWindows);
 
   // Verify minimum coverage threshold
   final getLcov = GetLcov(
