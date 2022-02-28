@@ -14,8 +14,9 @@ class RecordsRepository {
     late List<Record> records;
     try {
       records = await Parser.parse(_file);
-    } on FileSystemException {
+    } on FileSystemException catch (e) {
       print(AppConstants.fileSystemExceptionMessage);
+      print(e);
     } catch (e) {
       rethrow;
     }

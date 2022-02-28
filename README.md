@@ -2,9 +2,9 @@
 
 ### Usage Example
 #### Long
-`dlcov --file=path/to/lcov.info --coverage=80 --exclude-sufix=.g.dart,.freezed.dart --log=true`  
+`dlcov --coverage=80 --exclude-sufix=.g.dart,.freezed.dart --log=true`  
 #### Short
-`dlcov -f ./lcov.info -c 80 -e .g.dart,.freezed.dart -l true`
+`dlcov -c 80 -e .g.dart,.freezed.dart -l true`
   
 #### Using Flutter defaults
 `dlcov -c 80`
@@ -16,7 +16,7 @@
 | Long | Short | Mandatory | Default | Sample | Description |
 |---|---|---|---|---|---|
 | --coverage | -c | true |  | 80.0 | min coverage target |
-| --file | -f | false | coverage/lcov.info | ./lcov.info | relative lcov file path |
+| --package-name | -p | false | current dir name | dlcov | Use this, if root folder is not the same as the package name |
 | --log | -l | false | false | true | Log every test coverage info in dlcov.log  - Limit up to 1000 lines |
 | --exclude-sufix | -e | false | .g.dart,.freezed.dart | .g.dart | Remove generated files from test coverage results, separated by commas |
 

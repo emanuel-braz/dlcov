@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:dlcov/core/app_constants.dart';
 import 'package:lcov_parser/lcov_parser.dart';
 
+import '../core/app_constants.dart';
 import 'config.dart';
 import 'coverage.dart';
 
@@ -35,8 +35,9 @@ class Lcov {
 
       final totalCoverage = (totalHits / totalFinds) * 100;
       coverage.totalCoverage = totalCoverage;
-    } on FileSystemException {
+    } on FileSystemException catch (e) {
       print(AppConstants.fileSystemExceptionMessage);
+      print(e);
       rethrow;
     } catch (e) {
       print(e);

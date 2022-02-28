@@ -14,7 +14,6 @@ class GetConfig {
     return Config(
         percentage: configModel.percentage,
         log: configModel.log,
-        file: configModel.file,
         excludeSufixes: configModel.excludeSufixes,
         packageName: configModel.packageName);
   }

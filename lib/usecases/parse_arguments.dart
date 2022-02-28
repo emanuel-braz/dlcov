@@ -5,11 +5,6 @@ import '../core/app_constants.dart';
 class ParseArguments {
   /// Return argResults
   ArgResults getArgResults(List<String> arguments, ArgParser parser) {
-    parser.addOption(AppConstants.argLongFile,
-        abbr: AppConstants.argShortFile,
-        defaultsTo: AppConstants.lcovPathDefaultValue,
-        mandatory: false);
-
     parser.addOption(AppConstants.argLongCoverage,
         abbr: AppConstants.argShortCoverage, mandatory: true);
 
