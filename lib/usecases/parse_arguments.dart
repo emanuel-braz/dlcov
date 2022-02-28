@@ -9,17 +9,27 @@ class ParseArguments {
         abbr: AppConstants.argShortFile,
         defaultsTo: AppConstants.lcovPathDefaultValue,
         mandatory: false);
+
     parser.addOption(AppConstants.argLongCoverage,
         abbr: AppConstants.argShortCoverage, mandatory: true);
+
     parser.addOption(AppConstants.argLongExcludeSufix,
         abbr: AppConstants.argShortExcludeSufix,
         defaultsTo: AppConstants.excludeSufixDefaultValue,
         mandatory: false);
+
     parser.addOption(AppConstants.argLongLog,
         abbr: AppConstants.argShortLog,
         defaultsTo: AppConstants.falseAsStringValue,
         mandatory: false);
+
+    parser.addOption(AppConstants.argLongPackageName,
+        abbr: AppConstants.argShortPackageName,
+        defaultsTo: null,
+        mandatory: false);
+
     final argResults = parser.parse(arguments);
+
     return argResults;
   }
 }

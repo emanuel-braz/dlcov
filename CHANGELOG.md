@@ -1,3 +1,19 @@
+# [2.0.0] 2022-02-27
+
+#### Break
+- The root project folder must to be the same name as the package name.
+    - Use the `--package-name` argument, in order to define the correct package name, if the root folder is not the same name.
+
+example:
+```shell
+dlcov -c 80 -p flutter_project_name
+dlcov -c 80 --package-name flutter_project_name
+```
+#### Added
+- workaround to make it consider all dart files in code coverage reports (It is not yet natively supported by Flutter.)
+#### Chore
+- fix repo issues link
+
 # [1.0.1] 2021-10-19
 #### Added
 - refactor app with arg params (see README.md)

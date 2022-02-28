@@ -4,3 +4,6 @@
 
 # Conventional directory for build output.
 build/
+
+# others
+dlcov_references_test.dart

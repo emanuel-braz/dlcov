@@ -14,6 +14,7 @@ class ConfigRepository {
     late double percentage;
     late List<String> excludeSufixes;
     late bool log;
+    late String? packageName;
 
     try {
       file = argResults[AppConstants.argLongFile];
@@ -27,16 +28,17 @@ class ConfigRepository {
           .toList();
       log = argResults[AppConstants.argLongLog].toString().toLowerCase() ==
           'true';
+      packageName = argResults[AppConstants.argLongPackageName];
     } catch (e) {
       print(e);
       rethrow;
     }
 
     return ConfigModel(
-      file: file,
-      percentage: percentage,
-      excludeSufixes: excludeSufixes,
-      log: log,
-    );
+        file: file,
+        percentage: percentage,
+        excludeSufixes: excludeSufixes,
+        log: log,
+        packageName: packageName);
   }
 }
