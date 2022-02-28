@@ -30,7 +30,6 @@ jobs:
       - run: mkdir build
       - run: dart pub get
       - run: dartanalyzer .
-      - run: flutter test --coverage
       - run: pub global activate --source path ../dlcov
       - run: dlcov -c 0
       - uses: codecov/codecov-action@v1
