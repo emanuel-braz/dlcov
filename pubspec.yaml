@@ -1,7 +1,7 @@
 name: dlcov
-description: CLI app to verify flutter test coverage target in CI/CD pipeline
-version: 1.0.1
-homepage: https://github.com/emanuel-braz/dlcov.git
+description: CLI to add code coverage threshold (CI/CD, git hooks, etc.)
+version: 1.0.2
+homepage: https://github.com/emanuel-braz/dlcov
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

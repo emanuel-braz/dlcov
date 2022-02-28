@@ -1,4 +1,4 @@
-## DLCOV - CLI app to verify flutter test coverage target in CI/CD pipeline
+## DLCOV - CLI to add code coverage threshold (CI/CD, git hooks, etc.)
 
 ### Usage Example
 #### Long

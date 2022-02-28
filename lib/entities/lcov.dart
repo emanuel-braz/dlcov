@@ -8,19 +8,29 @@ import 'coverage.dart';
 
 /// Lcov entity
 class Lcov {
+  /// [Config]
   final Config config;
+
+  /// [Coverage]
   late Coverage coverage;
+
+  /// [List<Record>]
   List<Record> records;
 
+  /// totalHits
   var totalHits = 0;
+
+  /// totalFinds
   var totalFinds = 0;
 
+  /// [Lcov] constructor
   Lcov({required this.config, required this.records}) {
     try {
       coverage = Coverage(config.percentage);
 
       records =
           records.where((element) => !hasSufix(element.file ?? '')).toList();
+
       records.forEach(updateTotals);
 
       final totalCoverage = (totalHits / totalFinds) * 100;

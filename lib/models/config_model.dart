@@ -1,8 +1,14 @@
 /// Config model
 class ConfigModel {
+  /// file
   final String file;
+
+  /// percentage
   final double percentage;
+
   final List<String> excludeSufixes;
+
+  /// log
   final bool log;
 
   ConfigModel({
