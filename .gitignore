@@ -7,3 +7,4 @@ build/
 
 # others
 dlcov_references_test.dart
+coverage/lcov.info

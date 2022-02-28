@@ -10,14 +10,12 @@ class ConfigRepository {
 
   /// Execute usecase
   ConfigModel call() {
-    late String file;
     late double percentage;
     late List<String> excludeSufixes;
     late bool log;
     late String? packageName;
 
     try {
-      file = argResults[AppConstants.argLongFile];
       percentage = double.parse(argResults[AppConstants.argLongCoverage]);
       final String excludesResult =
           argResults[AppConstants.argLongExcludeSufix];
@@ -35,7 +33,6 @@ class ConfigRepository {
     }
 
     return ConfigModel(
-        file: file,
         percentage: percentage,
         excludeSufixes: excludeSufixes,
         log: log,

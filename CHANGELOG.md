@@ -8,6 +8,8 @@ example:
 ```shell
 dlcov -c 80 -p flutter_project_name
 dlcov -c 80 --package-name flutter_project_name
+
+- Remove `file` argument (always uses default: coverage/lcov.info)
 ```
 #### Added
 - workaround to make it consider all dart files in code coverage reports (It is not yet natively supported by Flutter.)

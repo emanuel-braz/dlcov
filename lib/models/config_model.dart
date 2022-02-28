@@ -1,8 +1,5 @@
 /// Config model
 class ConfigModel {
-  /// file
-  final String file;
-
   /// percentage
   final double percentage;
 
@@ -15,8 +12,7 @@ class ConfigModel {
   final String? packageName;
 
   ConfigModel(
-      {required this.file,
-      required this.percentage,
+      {required this.percentage,
       required this.excludeSufixes,
       required this.log,
       this.packageName});
