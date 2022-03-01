@@ -3,7 +3,7 @@ class ConfigModel {
   /// percentage
   final double percentage;
 
-  final List<String> excludeSufixes;
+  final List<String> excludeSuffixes;
 
   /// log
   final bool log;
@@ -13,7 +13,7 @@ class ConfigModel {
 
   ConfigModel(
       {required this.percentage,
-      required this.excludeSufixes,
+      required this.excludeSuffixes,
       required this.log,
       this.packageName});
 }
