@@ -2,14 +2,14 @@
 
 ### Usage Example
 #### Long
-`dlcov --coverage=80 --exclude-suffix=.g.dart,.freezed.dart --log=true`  
+`dlcov --coverage=80 --exclude-suffix=.g.dart,.freezed.dart --log=true`
 #### Short
 `dlcov -c 80 -e .g.dart,.freezed.dart -l true`
-  
+
 #### Using Flutter defaults
 `dlcov -c 80`
 
-### Install 
+### Install
 `pub global activate dlcov`
 
 ## Parameters availables
@@ -20,8 +20,8 @@
 | --log | -l | false | false | true | Log every test coverage info in dlcov.log  - Limit up to 1000 lines |
 | --exclude-suffix | -e | false | .g.dart,.freezed.dart | .g.dart | Remove generated files from test coverage results, separated by commas |
 
-### Github actions  
-  
-if the test coverage is less than 80, it stop the pipeline here, and abort the actions  
-  
+### Github actions
+
+if the test coverage is less than 80, it stop the pipeline here, and abort the actions
+
 <img width="605" alt="ScreenShot" src="https://user-images.githubusercontent.com/3827308/137652713-497c726a-5f56-4a63-b59b-3c135d6921ec.png">
