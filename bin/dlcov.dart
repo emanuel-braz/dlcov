@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:dlcov/core/app_constants.dart';
 import 'package:dlcov/entities/config.dart';
-import 'package:dlcov/repositories/config_repostory.dart';
+import 'package:dlcov/repositories/config_repository.dart';
 import 'package:dlcov/repositories/record_repository.dart';
 import 'package:dlcov/usecases/create_file_references.dart';
 import 'package:dlcov/usecases/get_config.dart';
@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   await CreateFileReferences(
           CreateFileReferencesHelper(FileSystemUtil()),
           AppConstants.sourceDirectory,
-          config.excludeSufixes,
+          config.excludeSuffixes,
           config.packageName)
       .call();
 
@@ -46,7 +46,7 @@ showHelpAndExit(bool help) {
     print('\nLong\t\tShort\tMandatory\tDefault\t\t\tSample\t\tDescription\n\n'
         '--coverage\t-c\ttrue\t\t80.0\t\t\t\t\tMin coverage threshold\n'
         '--log\t\t-l\tfalse\t\tfalse\t\t\ttrue\t\tLog every test coverage info in dlcov.log - Limit up to 1000 lines\n'
-        '--exclude-sufix\t-e\tfalse\t\t.g.dart,.freezed.dart\t.g.dart\t\tRemove generated files from test coverage results, separated by commas\n'
+        '--exclude-suffix\t-e\tfalse\t\t.g.dart,.freezed.dart\t.g.dart\t\tRemove generated files from test coverage results, separated by commas\n'
         '--package-name\t-p\tfalse\t\tcurr dir name\t\tdlcov\t\tUse this, if root folder is not the same as the package name\n\n'
         'Example: dlcov -c 80\n');
     exit(0);

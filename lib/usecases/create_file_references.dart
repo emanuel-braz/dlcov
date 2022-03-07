@@ -6,14 +6,14 @@ import '../utils/file_system/file_system_util.dart';
 
 class CreateFileReferences {
   final String _sourceDirectory;
-  final List<String> _removeFileWithSufixes;
+  final List<String> _removeFileWithSuffixes;
   final CreateFileReferencesHelper _helper;
   final String? _packageName;
 
   CreateFileReferences(
     this._helper,
     this._sourceDirectory, [
-    this._removeFileWithSufixes = const [],
+    this._removeFileWithSuffixes = const [],
     String? packageName,
   ]) : _packageName = packageName ??= Directory.current.path.split('/').last;
 
@@ -21,8 +21,8 @@ class CreateFileReferences {
     final fileSytemEntities =
         await _helper.getFileSystemEntities(Directory(_sourceDirectory));
 
-    final filteredFilePaths =
-        _helper.getFilteredFilePaths(fileSytemEntities, _removeFileWithSufixes);
+    final filteredFilePaths = _helper.getFilteredFilePaths(
+        fileSytemEntities, _removeFileWithSuffixes);
 
     final fileImports = [
       '/*\n'
@@ -53,7 +53,7 @@ class CreateFileReferencesHelper {
   CreateFileReferencesHelper(this.fileSystemUtil);
 
   getImportsList(List<FileSystemEntity> fileSytemEntities,
-      List<String> removeFileWithSufixes) {}
+      List<String> removeFileWithSuffixes) {}
 
   Future<List<FileSystemEntity>> getFileSystemEntities(Directory dir) {
     final files = <FileSystemEntity>[];
@@ -69,12 +69,12 @@ class CreateFileReferencesHelper {
   }
 
   List<String> getFilteredFilePaths(List<FileSystemEntity> fileSytemEntities,
-      List<String> removeFileWithSufixes) {
+      List<String> removeFileWithSuffixes) {
     return fileSytemEntities
         .where((fileSystemEntity) {
           return fileSystemEntity.path.endsWith('.dart') &&
-              !removeFileWithSufixes
-                  .any((sufix) => fileSystemEntity.path.endsWith(sufix));
+              !removeFileWithSuffixes
+                  .any((suffix) => fileSystemEntity.path.endsWith(suffix));
         })
         .map((e) => e.path)
         .toList();

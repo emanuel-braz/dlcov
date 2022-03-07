@@ -11,15 +11,15 @@ class ConfigRepository {
   /// Execute usecase
   ConfigModel call() {
     late double percentage;
-    late List<String> excludeSufixes;
+    late List<String> excludeSuffixes;
     late bool log;
     late String? packageName;
 
     try {
       percentage = double.parse(argResults[AppConstants.argLongCoverage]);
       final String excludesResult =
-          argResults[AppConstants.argLongExcludeSufix];
-      excludeSufixes = excludesResult
+          argResults[AppConstants.argLongExcludeSuffix];
+      excludeSuffixes = excludesResult
           .split(',')
           .map((e) => e.trim())
           .where((element) => element != '')
@@ -34,7 +34,7 @@ class ConfigRepository {
 
     return ConfigModel(
         percentage: percentage,
-        excludeSufixes: excludeSufixes,
+        excludeSuffixes: excludeSuffixes,
         log: log,
         packageName: packageName);
   }

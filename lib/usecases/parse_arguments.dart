@@ -8,9 +8,9 @@ class ParseArguments {
     parser.addOption(AppConstants.argLongCoverage,
         abbr: AppConstants.argShortCoverage, mandatory: true);
 
-    parser.addOption(AppConstants.argLongExcludeSufix,
-        abbr: AppConstants.argShortExcludeSufix,
-        defaultsTo: AppConstants.excludeSufixDefaultValue,
+    parser.addOption(AppConstants.argLongExcludeSuffix,
+        abbr: AppConstants.argShortExcludeSuffix,
+        defaultsTo: AppConstants.excludeSuffixDefaultValue,
         mandatory: false);
 
     parser.addOption(AppConstants.argLongLog,
