@@ -1,7 +1,7 @@
 import 'package:args/args.dart';
 
 import '../entities/config.dart';
-import '../repositories/config_repostory.dart';
+import '../repositories/config_repository.dart';
 
 class GetConfig {
   final ConfigRepository repository;
@@ -14,7 +14,7 @@ class GetConfig {
     return Config(
         percentage: configModel.percentage,
         log: configModel.log,
-        excludeSufixes: configModel.excludeSufixes,
+        excludeSuffixes: configModel.excludeSuffixes,
         packageName: configModel.packageName);
   }
 }

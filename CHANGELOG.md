@@ -1,3 +1,10 @@
+# [3.0.0] 2022-03-07
+#### Break
+- Spelling fixes: `--exclude-sufix` becomes `--exclude-suffix`
+
+# [2.0.1] 2022-02-28
+- fix windows compatibility
+
 # [2.0.0] 2022-02-27
 
 #### Break

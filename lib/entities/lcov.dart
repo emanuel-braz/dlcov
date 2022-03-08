@@ -29,7 +29,7 @@ class Lcov {
       coverage = Coverage(config.percentage);
 
       records =
-          records.where((element) => !hasSufix(element.file ?? '')).toList();
+          records.where((element) => !hasSuffix(element.file ?? '')).toList();
 
       records.forEach(updateTotals);
 
@@ -45,10 +45,10 @@ class Lcov {
     }
   }
 
-  /// Check if has sufix
-  bool hasSufix(String value) {
+  /// Check if has suffix
+  bool hasSuffix(String value) {
     final matchList =
-        config.excludeSufixes.where((element) => value.endsWith(element));
+        config.excludeSuffixes.where((element) => value.endsWith(element));
     return matchList.isNotEmpty;
   }
 

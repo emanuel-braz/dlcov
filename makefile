@@ -8,5 +8,5 @@ analyze:
 publish:
 	@git checkout master && git pull && dart pub publish
 
-coverage:
-	@flutter test --coverage && genhtml coverage/lcov.info -o coverage/html && open coverage/html/index.html
+show-coverage:
+	@genhtml coverage/lcov.info -o coverage/html && open coverage/html/index.html
