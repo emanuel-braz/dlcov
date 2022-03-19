@@ -21,8 +21,11 @@ class CreateFileReferences {
     final fileSytemEntities =
         await _helper.getFileSystemEntities(Directory(_sourceDirectory));
 
-    final filteredFilePaths = _helper.getFilteredFilePaths(
-        fileSytemEntities, _removeFileWithSuffixes);
+    final candidateFiles =
+        await _helper.getOnlyCandidateFiles(fileSytemEntities);
+
+    final filteredFilePaths =
+        _helper.getFilteredFilePaths(candidateFiles, _removeFileWithSuffixes);
 
     final fileImports = [
       '/*\n'
@@ -68,15 +71,22 @@ class CreateFileReferencesHelper {
     return completer.future;
   }
 
-  List<String> getFilteredFilePaths(List<FileSystemEntity> fileSytemEntities,
-      List<String> removeFileWithSuffixes) {
-    return fileSytemEntities
-        .where((fileSystemEntity) {
-          return fileSystemEntity.path.endsWith('.dart') &&
-              !removeFileWithSuffixes
-                  .any((suffix) => fileSystemEntity.path.endsWith(suffix));
-        })
+  List<String> getFilteredFilePaths(
+      List<File> files, List<String> removeFileWithSuffixes) {
+    return files
+        .where((file) =>
+            !removeFileWithSuffixes.any((suffix) => file.path.endsWith(suffix)))
         .map((e) => e.path)
+        .toList();
+  }
+
+  Future<List<File>> getOnlyCandidateFiles(
+      List<FileSystemEntity> fileSytemEntities) async {
+    List<File> candidateFiles = fileSytemEntities.whereType<File>().toList();
+    return candidateFiles
+        .where((file) => file.path.endsWith('.dart'))
+        .where((file) =>
+            !file.readAsLinesSync().any((line) => line.startsWith('part of')))
         .toList();
   }
 

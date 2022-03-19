@@ -1,3 +1,7 @@
+# [3.0.1] 2022-03-19
+#### Fix
+- remove 'part of' files from list of imports
+
 # [3.0.0] 2022-03-07
 #### Break
 - Spelling fixes: `--exclude-sufix` becomes `--exclude-suffix`

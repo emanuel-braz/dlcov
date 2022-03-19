@@ -1,4 +1,4 @@
-## DLCOV - CLI to add code coverage threshold (CI/CD, git hooks, etc.)
+## DLCOV - CLI to verify code coverage threshold (CI/CD, git hooks, etc.)
 
 ### Usage Example
 #### Long
