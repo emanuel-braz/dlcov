@@ -1,6 +1,6 @@
 name: dlcov
 description: A CLI to add code coverage threshold (CI/CD, git hooks, etc.)
-version: 3.0.0
+version: 3.0.1
 homepage: https://github.com/emanuel-braz/dlcov
 
 environment:
