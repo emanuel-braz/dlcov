@@ -14,9 +14,24 @@ class ConfigRepository {
     late List<String> excludeSuffixes;
     late bool log;
     late String? packageName;
+    late ArgResults? command;
+    bool includeUntestedFiles = true;
+    late String? lcovGen;
 
     try {
-      percentage = double.parse(argResults[AppConstants.argLongCoverage]);
+      command = argResults.command;
+
+      final includeUntestedFilesInput =
+          argResults[AppConstants.argIncludeUntestedFiles];
+
+      includeUntestedFiles = includeUntestedFilesInput != null
+          ? includeUntestedFilesInput == 'true'
+          : true;
+
+      lcovGen = argResults[AppConstants.argLcovGen];
+
+      percentage =
+          double.parse(argResults[AppConstants.argLongCoverage] ?? '0');
       final String excludesResult =
           argResults[AppConstants.argLongExcludeSuffix];
       excludeSuffixes = excludesResult
@@ -36,6 +51,9 @@ class ConfigRepository {
         percentage: percentage,
         excludeSuffixes: excludeSuffixes,
         log: log,
-        packageName: packageName);
+        packageName: packageName,
+        command: command,
+        includeUntestedFiles: includeUntestedFiles,
+        lcovGen: lcovGen);
   }
 }

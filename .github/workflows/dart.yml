@@ -31,7 +31,7 @@ jobs:
       - run: dart pub get
       - run: dartanalyzer .
       - run: pub global activate --source path ../dlcov
-      - run: dlcov -c 0
+      - run: dlcov -c 0 --lcov-gen="flutter test --coverage"
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
