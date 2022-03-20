@@ -15,7 +15,7 @@ class ConfigRepository {
     late bool log;
     late String? packageName;
     late ArgResults? command;
-    bool includeUntestedFiles = true;
+    bool includeUntestedFiles = false;
     late String? lcovGen;
 
     try {
@@ -26,7 +26,7 @@ class ConfigRepository {
 
       includeUntestedFiles = includeUntestedFilesInput != null
           ? includeUntestedFilesInput == 'true'
-          : true;
+          : false;
 
       lcovGen = argResults[AppConstants.argLcovGen];
 

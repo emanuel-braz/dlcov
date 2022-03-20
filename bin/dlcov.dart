@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:args/args.dart';
 import 'package:dlcov/core/app_constants.dart';
 import 'package:dlcov/entities/config.dart';
@@ -13,6 +12,7 @@ import 'package:dlcov/usecases/parse_arguments.dart';
 import 'package:dlcov/usecases/verify_coverage.dart';
 import 'package:dlcov/utils/commands/app_command.dart';
 import 'package:dlcov/utils/file_system/file_system_util.dart';
+import 'package:dlcov/utils/process_util.dart';
 
 void main(List<String> arguments) async {
   final parser = ArgParser();
@@ -44,8 +44,7 @@ void main(List<String> arguments) async {
     // Generate lcov.info
     final lcovGeneratorParams = config.lcovGen!.split(' ');
     final executable = lcovGeneratorParams.removeAt(0);
-    await Process.run(executable, lcovGeneratorParams,
-        runInShell: Platform.isWindows);
+    await ProcessUtil().startProcess(executable, lcovGeneratorParams);
   }
 
   // Verify minimum coverage threshold

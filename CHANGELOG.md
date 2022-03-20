@@ -1,3 +1,8 @@
+# [4.0.1] 2022-03-20
+#### Chore
+- refactoring code
+
+
 # [4.0.0] 2022-03-19
 #### Break
 - `--coverage` parameter becomes optional (default = 0)

@@ -49,7 +49,7 @@ showHelpAndExit(bool help) {
         '--coverage, -c\t\t\tMin coverage threshold\n'
         '--log, -l\t\t\tLog every test coverage info in dlcov.log - Limit up to 1000 lines\n'
         '--exclude-suffix, -e\t\tRemove generated files from test coverage results, separated by commas\n'
-        '--include-untested-files\tUse this, if root folder is not the same as the package name\n'
+        '--include-untested-files\tGet reports more coherent with reality, and do not ignore untested files during the analysis\n'
         '--lcov-gen\t\t\tGenerate `lcov.info` through the command "flutter test --coverage"\n'
         '\nCommands:\n\n'
         'gen-refs\t\t\tGenerate tested and untested file references, it should be used before `lcov.info` file generation step.\n\n'
