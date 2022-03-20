@@ -16,6 +16,8 @@ class GetConfig {
         log: configModel.log,
         excludeSuffixes: configModel.excludeSuffixes,
         packageName: configModel.packageName,
-        command: configModel.command);
+        command: configModel.command,
+        includeUntestedFiles: configModel.includeUntestedFiles,
+        lcovGen: configModel.lcovGen);
   }
 }

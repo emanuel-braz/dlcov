@@ -3,7 +3,9 @@ import 'package:args/command_runner.dart';
 
 import '../../core/app_constants.dart';
 import '../../entities/config.dart';
-import 'prepare_command.dart';
+import '../../usecases/create_file_references.dart';
+import '../file_system/file_system_util.dart';
+import 'gen_refs_command.dart';
 
 /// AppCommand
 class AppCommand {
@@ -11,7 +13,13 @@ class AppCommand {
       {required ArgParser parser,
       required Config config,
       required List<String> arguments}) {
-    return CommandRunner(AppConstants.cmdPrepare, AppConstants.cmdPrepareHelp)
-      ..addCommand(PrepareCommand(config));
+    return CommandRunner(AppConstants.cmdGenRefs, AppConstants.cmdGenRefsHelp)
+      ..addCommand(GenRefsCommand(
+          config: config,
+          createFileReferences: CreateFileReferences(
+              CreateFileReferencesHelper(FileSystemUtil()),
+              AppConstants.sourceDirectory,
+              config.excludeSuffixes,
+              config.packageName)));
   }
 }

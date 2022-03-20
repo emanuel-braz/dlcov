@@ -10,7 +10,11 @@ class ParseArguments {
     parser.addOption(AppConstants.argLongCoverage,
         abbr: AppConstants.argShortCoverage, mandatory: false);
 
-    parser.addCommand(AppConstants.cmdPrepare, ArgParser());
+    parser.addOption(AppConstants.argLcovGen, mandatory: false);
+
+    parser.addOption(AppConstants.argIncludeUntestedFiles, mandatory: false);
+
+    parser.addCommand(AppConstants.cmdGenRefs, ArgParser());
 
     parser.addFlag(AppConstants.argLongHelp,
         defaultsTo: false,
@@ -41,12 +45,16 @@ class ParseArguments {
 
 showHelpAndExit(bool help) {
   if (help) {
-    print('\nLong\t\tShort\tMandatory\tDefault\t\t\tSample\t\tDescription\n\n'
-        '--coverage\t-c\ttrue\t\t80.0\t\t\t\t\tMin coverage threshold\n'
-        '--log\t\t-l\tfalse\t\tfalse\t\t\ttrue\t\tLog every test coverage info in dlcov.log - Limit up to 1000 lines\n'
-        '--exclude-suffix\t-e\tfalse\t\t.g.dart,.freezed.dart\t.g.dart\t\tRemove generated files from test coverage results, separated by commas\n'
-        '--package-name\t-p\tfalse\t\tcurr dir name\t\tdlcov\t\tUse this, if root folder is not the same as the package name\n\n'
-        'Example: dlcov -c 80\n');
+    print('\n'
+        '--coverage, -c\t\t\tMin coverage threshold\n'
+        '--log, -l\t\t\tLog every test coverage info in dlcov.log - Limit up to 1000 lines\n'
+        '--exclude-suffix, -e\t\tRemove generated files from test coverage results, separated by commas\n'
+        '--include-untested-files\tUse this, if root folder is not the same as the package name\n'
+        '--lcov-gen\t\t\tGenerate `lcov.info` through the command "flutter test --coverage"\n'
+        '\nCommands:\n\n'
+        'gen-refs\t\t\tGenerate tested and untested file references, it should be used before `lcov.info` file generation step.\n\n'
+        '\tUsage Example:\n'
+        '\tdlcov -c 80 --lcov-gen="flutter test --coverage"\n');
     exit(0);
   }
 }

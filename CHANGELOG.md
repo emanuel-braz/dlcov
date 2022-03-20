@@ -3,7 +3,9 @@
 - `--coverage` parameter becomes optional (default = 0)
 
 #### Added
-- add the `prepare` command, to generate references to untested files
+- add the `gen-refs` command, to generate references to untested files
+- add the `include-untested-files` parameter
+- add the `lcov-gen` parameter
 
 # [3.0.1] 2022-03-19
 #### Fix

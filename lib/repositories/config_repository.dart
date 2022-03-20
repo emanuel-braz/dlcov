@@ -15,9 +15,20 @@ class ConfigRepository {
     late bool log;
     late String? packageName;
     late ArgResults? command;
+    bool includeUntestedFiles = true;
+    late String? lcovGen;
 
     try {
       command = argResults.command;
+
+      final includeUntestedFilesInput =
+          argResults[AppConstants.argIncludeUntestedFiles];
+
+      includeUntestedFiles = includeUntestedFilesInput != null
+          ? includeUntestedFilesInput == 'true'
+          : true;
+
+      lcovGen = argResults[AppConstants.argLcovGen];
 
       percentage =
           double.parse(argResults[AppConstants.argLongCoverage] ?? '0');
@@ -41,6 +52,8 @@ class ConfigRepository {
         excludeSuffixes: excludeSuffixes,
         log: log,
         packageName: packageName,
-        command: command);
+        command: command,
+        includeUntestedFiles: includeUntestedFiles,
+        lcovGen: lcovGen);
   }
 }

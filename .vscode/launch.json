@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "dlcov -c",
+            "name": "coverage=80",
             "request": "launch",
             "type": "dart",
             "program": "bin/dlcov.dart",
@@ -13,12 +13,12 @@
             "args": ["-c", "80"]
         },
         {
-            "name": "dlcov prepare",
+            "name": "gen-refs",
             "request": "launch",
             "type": "dart",
             "program": "bin/dlcov.dart",
             "flutterMode": "debug",
-            "args": ["prepare"]
+            "args": ["gen-refs"]
         }
     ]
 }

@@ -5,6 +5,8 @@ class AppConstants {
   static String argLongLog = 'log';
   static String argLongHelp = 'help';
   static String argLongPackageName = 'package-name';
+  static String argIncludeUntestedFiles = 'include-untested-files';
+  static String argLcovGen = 'lcov-gen';
 
   static String argHelpDescription = 'Show help informations';
 
@@ -14,8 +16,8 @@ class AppConstants {
   static String argShortHelp = 'h';
   static String argShortPackageName = 'p';
 
-  static String cmdPrepare = 'prepare';
-  static String cmdPrepareHelp =
+  static String cmdGenRefs = 'gen-refs';
+  static String cmdGenRefsHelp =
       'Generate tested and untested file references, it should be used before the lcov.info file generation';
 
   static String falseAsStringValue = 'false';

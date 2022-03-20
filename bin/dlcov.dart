@@ -5,6 +5,7 @@ import 'package:dlcov/entities/config.dart';
 import 'package:dlcov/repositories/config_repository.dart';
 import 'package:dlcov/repositories/record_repository.dart';
 import 'package:dlcov/usecases/create_file_references.dart';
+import 'package:dlcov/usecases/delete_file_references.dart';
 import 'package:dlcov/usecases/get_config.dart';
 import 'package:dlcov/usecases/get_lcov.dart';
 import 'package:dlcov/usecases/get_records.dart';
@@ -20,23 +21,32 @@ void main(List<String> arguments) async {
   final argResults = ParseArguments().getArgResults(arguments, parser);
   config = GetConfig(ConfigRepository(argResults), parser)();
 
-  if (config.command?.name == AppConstants.cmdPrepare) {
+  if (config.command?.name == AppConstants.cmdGenRefs) {
     return AppCommand()
         .setCommands(parser: parser, config: config, arguments: arguments)
         .run(arguments);
   }
 
-  // Create references for all dart files
-  await CreateFileReferences(
-          CreateFileReferencesHelper(FileSystemUtil()),
-          AppConstants.sourceDirectory,
-          config.excludeSuffixes,
-          config.packageName)
-      .call();
+  if (config.includeUntestedFiles) {
+    // Create references for all dart files
+    await CreateFileReferences(
+            CreateFileReferencesHelper(FileSystemUtil()),
+            AppConstants.sourceDirectory,
+            config.excludeSuffixes,
+            config.packageName)
+        .call();
+  } else {
+    // Delete references for all dart files
+    await DeleteFileReferences(FileSystemUtil()).call();
+  }
 
-  // Generate lcov.info
-  await Process.run('flutter', ['test', '--coverage'],
-      runInShell: Platform.isWindows);
+  if (config.lcovGen != null) {
+    // Generate lcov.info
+    final lcovGeneratorParams = config.lcovGen!.split(' ');
+    final executable = lcovGeneratorParams.removeAt(0);
+    await Process.run(executable, lcovGeneratorParams,
+        runInShell: Platform.isWindows);
+  }
 
   // Verify minimum coverage threshold
   final getLcov = GetLcov(
