@@ -1,3 +1,5 @@
+import 'package:args/args.dart';
+
 /// Config model
 class ConfigModel {
   /// percentage
@@ -11,9 +13,13 @@ class ConfigModel {
   /// package name
   final String? packageName;
 
+  /// Command
+  final ArgResults? command;
+
   ConfigModel(
       {required this.percentage,
       required this.excludeSuffixes,
       required this.log,
-      this.packageName});
+      this.packageName,
+      this.command});
 }

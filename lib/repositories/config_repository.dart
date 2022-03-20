@@ -14,9 +14,13 @@ class ConfigRepository {
     late List<String> excludeSuffixes;
     late bool log;
     late String? packageName;
+    late ArgResults? command;
 
     try {
-      percentage = double.parse(argResults[AppConstants.argLongCoverage]);
+      command = argResults.command;
+
+      percentage =
+          double.parse(argResults[AppConstants.argLongCoverage] ?? '0');
       final String excludesResult =
           argResults[AppConstants.argLongExcludeSuffix];
       excludeSuffixes = excludesResult
@@ -36,6 +40,7 @@ class ConfigRepository {
         percentage: percentage,
         excludeSuffixes: excludeSuffixes,
         log: log,
-        packageName: packageName);
+        packageName: packageName,
+        command: command);
   }
 }

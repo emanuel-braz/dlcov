@@ -6,11 +6,17 @@ class AppConstants {
   static String argLongHelp = 'help';
   static String argLongPackageName = 'package-name';
 
+  static String argHelpDescription = 'Show help informations';
+
   static String argShortCoverage = 'c';
   static String argShortExcludeSuffix = 'e';
   static String argShortLog = 'l';
   static String argShortHelp = 'h';
   static String argShortPackageName = 'p';
+
+  static String cmdPrepare = 'prepare';
+  static String cmdPrepareHelp =
+      'Generate tested and untested file references, it should be used before the lcov.info file generation';
 
   static String falseAsStringValue = 'false';
   static String excludeSuffixDefaultValue = '.g.dart,.freezed.dart,.part.dart';

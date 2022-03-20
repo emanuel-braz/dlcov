@@ -5,12 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "lcov debug",
+            "name": "dlcov -c",
             "request": "launch",
             "type": "dart",
             "program": "bin/dlcov.dart",
             "flutterMode": "debug",
             "args": ["-c", "80"]
+        },
+        {
+            "name": "dlcov prepare",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/dlcov.dart",
+            "flutterMode": "debug",
+            "args": ["prepare"]
         }
     ]
 }

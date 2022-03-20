@@ -15,10 +15,14 @@
 ## Parameters availables
 | Long | Short | Mandatory | Default | Sample | Description |
 |---|---|---|---|---|---|
-| --coverage | -c | true |  | 80.0 | min coverage target |
+| --coverage | -c | false | 0 | 80.0 | min coverage target |
 | --package-name | -p | false | current dir name | dlcov | Use this, if root folder is not the same as the package name |
 | --log | -l | false | false | true | Log every test coverage info in dlcov.log  - Limit up to 1000 lines |
 | --exclude-suffix | -e | false | .g.dart,.freezed.dart | .g.dart | Remove generated files from test coverage results, separated by commas |
+
+| Command | Description |
+|---|---|
+| prepare | Generate tested and untested file references, it should be used before generate lcov.info file |
 
 ### Github actions
 
