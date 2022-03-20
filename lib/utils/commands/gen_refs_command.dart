@@ -11,10 +11,9 @@ class GenRefsCommand extends Command {
   final CreateFileReferences createFileReferences;
 
   @override
-  final name = 'gen-refs';
+  final name = AppConstants.cmdGenRefs;
   @override
-  final description =
-      'Generate tested and untested file references, it should be used before generate lcov.info file';
+  final description = AppConstants.cmdGenRefsHelp;
 
   GenRefsCommand({
     required this.config,

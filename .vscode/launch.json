@@ -10,7 +10,7 @@
             "type": "dart",
             "program": "bin/dlcov.dart",
             "flutterMode": "debug",
-            "args": ["-c", "80"]
+            "args": ["-c", "80", "--lcov-gen=\"flutter test --coverage\""]
         },
         {
             "name": "gen-refs",
