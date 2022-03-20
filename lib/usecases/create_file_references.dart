@@ -15,7 +15,12 @@ class CreateFileReferences {
     this._sourceDirectory, [
     this._removeFileWithSuffixes = const [],
     String? packageName,
-  ]) : _packageName = packageName ??= Directory.current.path.split('/').last;
+  ]) : _packageName = packageName ??= File('pubspec.yaml')
+            .readAsLinesSync()
+            .firstWhere((line) => line.startsWith('name:'))
+            .split(':')
+            .last
+            .trim();
 
   Future<File> call() async {
     final fileSytemEntities =

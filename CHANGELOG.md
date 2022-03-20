@@ -1,3 +1,12 @@
+# [4.0.0] 2022-03-19
+#### Break
+- `--coverage` parameter becomes optional (default = 0)
+
+#### Added
+- add the `gen-refs` command, to generate references to untested files
+- add the `include-untested-files` parameter
+- add the `lcov-gen` parameter
+
 # [3.0.1] 2022-03-19
 #### Fix
 - remove 'part of' files from list of imports

@@ -15,6 +15,9 @@ class GetConfig {
         percentage: configModel.percentage,
         log: configModel.log,
         excludeSuffixes: configModel.excludeSuffixes,
-        packageName: configModel.packageName);
+        packageName: configModel.packageName,
+        command: configModel.command,
+        includeUntestedFiles: configModel.includeUntestedFiles,
+        lcovGen: configModel.lcovGen);
   }
 }
