@@ -5,7 +5,7 @@
 
 #### The command above does:
 - `--coverage=80` Check if code coverage threshold is equal or greater than 80.0%
-- `--include-untested-files=true` Generate references to untested files (defalt equals "true")
+- `--include-untested-files=true` Generate references to untested files (defalt equals "false")
 - `--lcov-gen="flutter test --coverage"` Generate `lcov.info` through the command "flutter test --coverage", it can be used with "test_cov" for dart only for example, or others if you prefer.
 - `--log=true` Log every test coverage info in dlcov.log - Limit up to 1000 lines
 
@@ -15,7 +15,7 @@ or add as dev dependency to `pubspec.yaml`
 
 ```yaml
 dev_dependencies:
-  dlcov: 4.0.0
+  dlcov: 4.0.1
 ```
 
 #### Uses
@@ -25,8 +25,8 @@ dev_dependencies:
 
 #### Verify if code coverage threshold is equal or greater than 80.0%
 `dlcov gen-refs && flutter test --coverage && dlcov -c 80`  
-`dlcov -c 80 --lcov-gen="flutter test --coverage"`  
-`dlcov -c 80 --lcov-gen="test_cov"`  
+`dlcov -c 80 --lcov-gen="flutter test --coverage" --include-untested-files=true`  
+`dlcov -c 80 --lcov-gen="test_cov" --include-untested-files=true`  
 
 ## Parameters availables
 | Long | Short | Mandatory | Default | Sample | Description |
@@ -34,7 +34,7 @@ dev_dependencies:
 | --coverage | -c | false | 0 | 80.0 | min coverage threshold |
 | --log | -l | false | false | true | Log every test coverage info in dlcov.log  - Limit up to 1000 lines |
 | --exclude-suffix | -e | false | .g.dart,.freezed.dart | .g.dart | Remove generated or other files from test coverage results, separated by commas |
-| --include-untested-files |  | false | true | true | Get reports more coherent with reality, and do not ignore untested files during the analysis |
+| --include-untested-files |  | false | false | true | Get reports more coherent with reality, and do not ignore untested files during the analysis |
 | --lcov-gen |  | false |  | "flutter test --coverage" | Generate `lcov.info` through the command "flutter test --coverage", it can be used with "test_cov" for dart only for example, or others if you prefer |
 
 | Command | Description |
