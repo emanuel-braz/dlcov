@@ -45,4 +45,5 @@ dev_dependencies:
 
 if the test coverage is less than 80, it stop the pipeline here, and abort the actions
 
-<img width="605" alt="ScreenShot" src="https://user-images.githubusercontent.com/3827308/137652713-497c726a-5f56-4a63-b59b-3c135d6921ec.png">
+![Screen Shot 2022-03-20 at 01 49 51](https://user-images.githubusercontent.com/3827308/159148726-41169935-54b8-42a2-9dbf-4f29a570a0fb.png)
+
