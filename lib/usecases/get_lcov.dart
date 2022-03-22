@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import '../core/app_error_codes.dart';
 import '../entities/config.dart';
 import '../entities/lcov.dart';
 import '../utils/logger.dart';
@@ -24,7 +25,7 @@ class GetLcov {
 
       return lcov;
     } catch (e) {
-      exit(128);
+      exit(AppErrorCodes.fatalError);
     }
   }
 }

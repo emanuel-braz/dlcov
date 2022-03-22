@@ -19,6 +19,22 @@
             "program": "bin/dlcov.dart",
             "flutterMode": "debug",
             "args": ["gen-refs"]
+        },
+        {
+            "name": "content patterns",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/dlcov.dart",
+            "flutterMode": "debug",
+            "args": ["gen-refs", "--exclude-files=*/usecases/*,*config_m*", "--exclude-contents=\"coverageParam\""]
+        },
+        {
+            "name": "content patterns path",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/dlcov.dart",
+            "flutterMode": "debug",
+            "args": ["gen-refs", "--exclude-files=*/usecases/*,*config_m*", "--exclude-contents-path=patterns.txt" ]
         }
     ]
 }

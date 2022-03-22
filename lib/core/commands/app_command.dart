@@ -4,7 +4,7 @@ import 'package:args/command_runner.dart';
 import '../../core/app_constants.dart';
 import '../../entities/config.dart';
 import '../../usecases/create_file_references.dart';
-import '../file_system/file_system_util.dart';
+import '../../utils/file_system/file_system_util.dart';
 import 'gen_refs_command.dart';
 
 /// AppCommand
@@ -19,7 +19,6 @@ class AppCommand {
           createFileReferences: CreateFileReferences(
               CreateFileReferencesHelper(FileSystemUtil()),
               AppConstants.sourceDirectory,
-              config.excludeSuffixes,
-              config.packageName)));
+              config)));
   }
 }
