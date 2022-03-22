@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 
 import '../core/app_constants.dart';
+import '../core/app_error_codes.dart';
 
 class ParseArguments {
   /// Return argResults
@@ -37,6 +38,15 @@ class ParseArguments {
         defaultsTo: null,
         mandatory: false);
 
+    parser.addMultiOption(AppConstants.argLongExcludeFiles,
+        splitCommas: true, help: AppConstants.argLongExcludeFilesHelp);
+
+    parser.addMultiOption(AppConstants.argLongExcludeContents,
+        splitCommas: true, help: AppConstants.argLongExcludeContentsHelp);
+
+    parser.addOption(AppConstants.argLongExcludeContentsPath,
+        mandatory: false, help: AppConstants.argLongExcludeContentsPathHelp);
+
     final argResults = parser.parse(arguments);
 
     return argResults;
@@ -51,10 +61,13 @@ showHelpAndExit(bool help) {
         '--exclude-suffix, -e\t\tRemove generated files from test coverage results, separated by commas\n'
         '--include-untested-files\tGet reports more coherent with reality, and do not ignore untested files during the analysis\n'
         '--lcov-gen\t\t\tGenerate `lcov.info` through the command "flutter test --coverage"\n'
+        '--exclude-files\t\t\tExclude files using regular expression\n'
+        '--exclude-contents\t\t\tExclude files using regular expression by it\'s content/code \n'
+        '--exclude-contents-path\t\t\tSelect a dictionary file, in order to exclude files using regular expression by it\'s content/code\n'
         '\nCommands:\n\n'
         'gen-refs\t\t\tGenerate tested and untested file references, it should be used before `lcov.info` file generation step.\n\n'
         '\tUsage Example:\n'
         '\tdlcov -c 80 --lcov-gen="flutter test --coverage"\n');
-    exit(0);
+    exit(AppErrorCodes.noError);
   }
 }

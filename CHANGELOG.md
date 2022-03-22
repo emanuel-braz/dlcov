@@ -1,3 +1,9 @@
+# [4.2.0] 2022-03-21
+#### Added
+- add --exclude-files parameter
+- add --exclude-contents parameter
+- add --exclude-contents-path parameter
+
 # [4.0.1] 2022-03-20
 #### Chore
 - refactoring code

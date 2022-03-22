@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:dlcov/core/extensions/list_extension.dart';
+import 'package:dlcov/utils/file_matcher_util.dart';
 import 'package:lcov_parser/lcov_parser.dart';
 
 import '../core/app_constants.dart';
+import '../utils/file_system/file_system_util.dart';
 import 'config.dart';
 import 'coverage.dart';
 
@@ -27,9 +30,40 @@ class Lcov {
   Lcov({required this.config, required this.records}) {
     try {
       coverage = Coverage(config.percentage);
+      final fileMatcher = FileMatcherUtil();
+      final fileSystemUtil = FileSystemUtil();
 
-      records =
-          records.where((element) => !hasSuffix(element.file ?? '')).toList();
+      records = records
+          .where((record) => !fileMatcher.hasSuffix(
+              file: record.file ?? '', excludeSuffixes: config.excludeSuffixes))
+          .where((record) => !fileMatcher.hasPattern(
+              value: record.file ?? '', patterns: config.excludeFiles))
+          .toList();
+
+      if (config.excludeContentsPath != null) {
+        final excludeContentsByPathList = fileSystemUtil
+            .readAsLinesSync(config.excludeContentsPath!)
+            .mapRegex()
+            .toList(growable: false);
+
+        records = records.where((record) {
+          if (record.file == null) return true;
+          final file = File(record.file!);
+          final loc = file.readAsLinesSync();
+          final hasPatterns = fileMatcher.hasPatterns(
+              values: loc, patterns: excludeContentsByPathList);
+          return !hasPatterns;
+        }).toList();
+      } else if (config.excludeContents.isNotEmpty) {
+        records = records.where((record) {
+          if (record.file == null) return true;
+          final file = File(record.file!);
+          final loc = file.readAsLinesSync();
+          final hasPatterns = fileMatcher.hasPatterns(
+              values: loc, patterns: config.excludeContents);
+          return !hasPatterns;
+        }).toList();
+      }
 
       records.forEach(updateTotals);
 
@@ -43,13 +77,6 @@ class Lcov {
       print(e);
       rethrow;
     }
-  }
-
-  /// Check if has suffix
-  bool hasSuffix(String value) {
-    final matchList =
-        config.excludeSuffixes.where((element) => value.endsWith(element));
-    return matchList.isNotEmpty;
   }
 
   /// Update totals

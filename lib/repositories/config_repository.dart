@@ -1,4 +1,5 @@
 import 'package:args/args.dart';
+import 'package:dlcov/core/extensions/list_extension.dart';
 
 import '../core/app_constants.dart';
 import '../models/config_model.dart';
@@ -17,6 +18,9 @@ class ConfigRepository {
     late ArgResults? command;
     bool includeUntestedFiles = false;
     late String? lcovGen;
+    late List<RegExp> excludeFiles;
+    late List<RegExp> excludeContents;
+    late String? excludeContentsPath;
 
     try {
       command = argResults.command;
@@ -42,6 +46,18 @@ class ConfigRepository {
       log = argResults[AppConstants.argLongLog].toString().toLowerCase() ==
           'true';
       packageName = argResults[AppConstants.argLongPackageName];
+
+      excludeFiles =
+          List<String>.from(argResults[AppConstants.argLongExcludeFiles])
+              .mapRegex()
+              .toList();
+
+      excludeContents =
+          List<String>.from(argResults[AppConstants.argLongExcludeContents])
+              .mapRegex()
+              .toList();
+
+      excludeContentsPath = argResults[AppConstants.argLongExcludeContentsPath];
     } catch (e) {
       print(e);
       rethrow;
@@ -54,6 +70,9 @@ class ConfigRepository {
         packageName: packageName,
         command: command,
         includeUntestedFiles: includeUntestedFiles,
-        lcovGen: lcovGen);
+        lcovGen: lcovGen,
+        excludeFiles: excludeFiles,
+        excludeContents: excludeContents,
+        excludeContentsPath: excludeContentsPath);
   }
 }
