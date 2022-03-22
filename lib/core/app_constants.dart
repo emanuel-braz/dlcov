@@ -7,6 +7,16 @@ class AppConstants {
   static String argLongPackageName = 'package-name';
   static String argIncludeUntestedFiles = 'include-untested-files';
   static String argLcovGen = 'lcov-gen';
+  static String argLongExcludeFiles = 'exclude-files';
+  static String argLongExcludeFilesHelp =
+      'the patterns used to exclude files from test coverage';
+  static String argLongExcludeContents = 'exclude-contents';
+  static String argLongExcludeContentsHelp =
+      'the patterns used to exclude files from test coverage by it\'s content(code) e.g: "*extends StatefulWidget*" remove all files that have statefulwidget implementations.';
+
+  static String argLongExcludeContentsPath = 'exclude-contents-path';
+  static String argLongExcludeContentsPathHelp =
+      'Path to file that contains all patterns separated by break line';
 
   static String argHelpDescription = 'Show help informations';
 
@@ -31,4 +41,6 @@ class AppConstants {
   static String dlcovFileReferences = 'test/dlcov_references_test.dart';
 
   static String sourceDirectory = 'lib';
+
+  static String fileNotFound = 'Error: File not found!';
 }

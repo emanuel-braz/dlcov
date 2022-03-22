@@ -1,5 +1,6 @@
 import 'package:args/args.dart';
 import 'package:dlcov/core/app_constants.dart';
+import 'package:dlcov/core/commands/app_command.dart';
 import 'package:dlcov/entities/config.dart';
 import 'package:dlcov/repositories/config_repository.dart';
 import 'package:dlcov/repositories/record_repository.dart';
@@ -10,7 +11,6 @@ import 'package:dlcov/usecases/get_lcov.dart';
 import 'package:dlcov/usecases/get_records.dart';
 import 'package:dlcov/usecases/parse_arguments.dart';
 import 'package:dlcov/usecases/verify_coverage.dart';
-import 'package:dlcov/utils/commands/app_command.dart';
 import 'package:dlcov/utils/file_system/file_system_util.dart';
 import 'package:dlcov/utils/process_util.dart';
 
@@ -30,11 +30,10 @@ void main(List<String> arguments) async {
   if (config.includeUntestedFiles) {
     // Create references for all dart files
     await CreateFileReferences(
-            CreateFileReferencesHelper(FileSystemUtil()),
-            AppConstants.sourceDirectory,
-            config.excludeSuffixes,
-            config.packageName)
-        .call();
+      CreateFileReferencesHelper(FileSystemUtil()),
+      AppConstants.sourceDirectory,
+      config,
+    ).call();
   } else {
     // Delete references for all dart files
     await DeleteFileReferences(FileSystemUtil()).call();

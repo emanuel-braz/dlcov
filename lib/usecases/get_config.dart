@@ -18,6 +18,9 @@ class GetConfig {
         packageName: configModel.packageName,
         command: configModel.command,
         includeUntestedFiles: configModel.includeUntestedFiles,
-        lcovGen: configModel.lcovGen);
+        lcovGen: configModel.lcovGen,
+        excludeFiles: configModel.excludeFiles,
+        excludeContents: configModel.excludeContents,
+        excludeContentsPath: configModel.excludeContentsPath);
   }
 }

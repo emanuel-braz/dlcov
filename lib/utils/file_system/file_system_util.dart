@@ -10,4 +10,10 @@ class FileSystemUtil {
       await file.delete();
     }
   }
+
+  List<String> readAsLinesSync(String path) {
+    final file = File(path);
+    if (file.existsSync()) return file.readAsLinesSync();
+    return [];
+  }
 }
