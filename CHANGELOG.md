@@ -1,3 +1,7 @@
+# [4.2.1] 2022-05-10
+#### Fixed
+- it fix malformed import paths in dart file - PR #20
+
 # [4.2.0] 2022-03-21
 #### Added
 - add --exclude-files parameter
